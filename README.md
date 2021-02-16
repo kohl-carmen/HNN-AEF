@@ -15,7 +15,7 @@ Abstract:
 
 ***
 ## Code
-This repository contains three .m files which reproduce the main result figures in the manuscript, using the empirical and simulated data provided in the ‘MEG_Data’ and 'HNN_Simulations' directories respectively..
+This repository contains three .m files which reproduce the main result figures in the manuscript, using the empirical and simulated data provided in the ‘MEG_Data’ and 'HNN_Simulations' directories respectively.
  *	**plot_fig3.m**
     *	This script plots Figure 3
     *   Simulated and empirical data associated with right/left contralateral AEFs
@@ -35,7 +35,7 @@ This repository contains three .m files which reproduce the main result figures 
 The ‘MEG_Data’ directory contains magnetoencephalographic data (MEG) collected from ten human participants who were presented with 1kHz sine wave tones. 
 Here, we provide one .txt file per condition, each containing the source-localized grand-average AEFs (column 1: time steps in ms, column 2: MEG signal in nAm)
 *	<span>**L_Contra**</span> contains data collected over the left hemisphere in response to stimuli presented on the right side (contralateral)
-*	<span>**L_Ipsi**</span> contains data collected over the left hemisphere in response to stimuli presented on the left side  (ipsilateral)
+*	<span>**L_Ipsi**</span> contains data collected over the left hemisphere in response to stimuli presented on the left side   (ipsilateral)
 *	<span>**R_Contra**</span> contains data collected over the right hemisphere in response to stimuli presented on the left side (contralateral)
 *	<span>**R_Ipsi**</span> contains data collected over the right hemisphere in response to stimuli presented on the right side (ipsilateral)
 ***
@@ -48,7 +48,7 @@ The ‘HNN_Parameters’ directory contains one .param file per model. Each file
 *	<span>**L_Contra_Manually_Fitted**</span> contains parameters for the simulation of MEG_Data/R_Contra before automatic parameter optimzation (see Manuscript Figure 3b insert)
 *	<span>**R_Contra_No_Smoothing**</span> contains parameters for the unsmoothed simulation of MEG_Data/R_Contra (see Supplementary Materials Figure S1)
 *	<span>**Alternative_Ca**</span> contains parameters for the simulation of an alternative model of MEG_Data/L_Contra (by decreasing the synapctic gains in all connections targeting inhibitory interneurons, see Manuscript Figure 4a)
-*	<span>Alternative_Gains</span> contains parameters for the simulation of an alternative model of MEG_Data/L_Contra (by decreasing Layer V pyramidal calcium channel densities, see Manuscript Figure 4b)
+*	<span>**Alternative_Gains**</span> contains parameters for the simulation of an alternative model of MEG_Data/L_Contra (by decreasing Layer V pyramidal calcium channel densities, see Manuscript Figure 4b)
 ***
 ## HNN_Simulations
 The ‘HNN_Simulations’ directory contains HNN output associated with each of the parameter files in 'HNN_Parameters'.
@@ -62,6 +62,6 @@ The ‘HNN_Simulations’ directory contains HNN output associated with each of 
 
 
 Further information, code, and data may be available upon request. 
-Please refer to the manuscript or contact: kohl.carmen.1@gmail.com. 
+Please refer to the manuscript or contact kohl.carmen.1@gmail.com. 
 For further information regarding the Human Neocortical Neurosolver, or to run simulations using the parameter files provided,
 please refer to [jonescompneurolab/hnn](https://github.com/jonescompneurolab/hnn) or [hnn.brown.edu](https://hnn.brown.edu/).
