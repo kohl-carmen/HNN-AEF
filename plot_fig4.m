@@ -14,70 +14,82 @@ clear
 dir = fileparts(which('plot_fig4.m'));
 cd(dir)
 
+%Conditions
 Alt_Model={'Alternative_Gains','Alternative_Ca'};
+
+% Figure Settings
 colours = {[109 187 228], [41 47 123]; [224 80 45], [37 79 39]};
-%% Figure 4
-figure
-hold on
 ylims = [-60 30];
 xlims = [0 250];
 sim_trials = 10;
 subidx = [1 3; 6 8];
+
+% Figure 
+figure
 for alt = 1:length(Alt_Model)
-    % plot trials
+    %% plot individual trials
     for trial = 1:sim_trials
-        trial_sim = load(strcat('HNN_Simulations\',Alt_Model{alt},...
+        
+        % load simulation
+        trial_simulation = load(strcat('HNN_Simulations\',Alt_Model{alt},...
                                 '\dpl_',num2str(trial-1),'.txt'));
-        sim_time = trial_sim(:,1);
-        trial_sim_L5 = trial_sim(:,4);
-        trial_sim_L2 = trial_sim(:,3);
-        trial_sim = trial_sim(:,2);
+        simulation_time = trial_simulation(:,1);%time
+        trial_simulation_agg = trial_simulation(:,2);%aggregate dipole
+        trial_simulation_L2 = trial_simulation(:,3);%layerII/III dipole
+        trial_simulation_L5 = trial_simulation(:,4);%layerV dipole
+        
+        % plot aggregate dipoles
         subplot(1,4,subidx(1,alt))
         hold on
-        plot(sim_time, trial_sim, 'Color', [108 108 108 127]./255)
+        plot(simulation_time, trial_simulation_agg,...
+             'Color', [colours{1,2}, 127]./255)
+         
+        % plot layer-specific dipoles
         subplot(2,4,subidx(2,alt))
         hold on
-        plot(sim_time, trial_sim_L5, 'Color', [colours{2,1}, 127]./255)
-        plot(sim_time, trial_sim_L2, 'Color', [colours{2,2}, 127]./255)
+        plot(simulation_time, trial_simulation_L5,...
+             'Color', [colours{2,1}, 127]./255)
+        plot(simulation_time, trial_simulation_L2,...
+             'Color', [colours{2,2}, 127]./255)
     end
-    % plot average
-    
+    %% plot average  
     % load MEG data (left contralateral)
     data = load(strcat('MEG_Data\L_Contra.txt'));
-    data_time = data(:,1);
-    data = data(:,2);
+    data_time = data(:,1);%time
+    data = data(:,2);%AEF
         
     % load alternative model
-    model = load(strcat('HNN_Simulations\',Alt_Model{alt},'\dpl.txt'));
-    model_time = model(:,1);
-    model_L5 = model(:,4);
-    model_L2 = model(:,3);
-    model = model(:,2);
-
-    %plot data
+    simulation = load(strcat('HNN_Simulations\',Alt_Model{alt},'\dpl.txt'));
+    simulation_time = simulation(:,1);%time
+    simulation_agg = simulation(:,2);%aggregate dipole
+    simulation_L2 = simulation(:,3);%layerII/III dipole
+    simulation_L5 = simulation(:,4);%layerV dipole
+    
+    %plot data & aggregate dipoles
     subplot(1,4,subidx(1,alt))
     l1(1) = plot(data_time, data ,'Color',...
-                 colours{1,1}./255,'Linewidth',2);
-    l1(2) = plot(model_time, model,'--','Color',...
-                 colours{1,2}./255,'Linewidth',2);
+                 colours{1,1}./255,'Linewidth',3);
+    l1(2) = plot(simulation_time, simulation_agg,'--','Color',...
+                 colours{1,2}./255,'Linewidth',3);
     xlabel('Time (ms)')
     ylabel('Amplitude (nAm)')
     ylim(ylims)
     xlim(xlims)
     title(strcat(Alt_Model{alt}(1:11),': ', Alt_Model{alt}(13:end)))
     legend(l1, 'Data','Model')
+    
+    %plot layer-specific dipoles
     subplot(2,4,subidx(2,alt))
-    l2(1) = plot(model_time, model_L5, 'Color',...
+    l2(1) = plot(simulation_time, simulation_L5, 'Color',...
                  colours{2,1}./255,'Linewidth',2);
-    l2(2) = plot(model_time, model_L2, 'Color',...
+    l2(2) = plot(simulation_time, simulation_L2, 'Color',...
                  colours{2,2}./255,'Linewidth',2);
     xlabel('Time (ms)')
     ylabel('Amplitude (nAm)')
     ylim(ylims)
     xlim(xlims)
-    title('Layer II/III - Layer V')
+    title('Layer-specific Dipoles')
     legend(l2, 'Layer V','Layer II/III')
-
 end
 
 
