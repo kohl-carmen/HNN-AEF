@@ -15,32 +15,32 @@ Abstract:
 
 ***
 ## Code
-This repository contains three .m files which reproduce the main manuscript figures, using the data provided in the ‘MEG_Data’ and 'HNN_Simulations' directories.
+This repository contains three .m files which reproduce the main result figures in the manuscript, using the empirical and simulated data provided in the ‘MEG_Data’ and 'HNN_Simulations' directories respectively..
  *	**plot_fig3.m**
     *	This script plots Figure 3
-    *   plots simulated and empirical data associated with right/left contralateral AEFs
+    *   Simulated and empirical data associated with right/left contralateral AEFs
      
 *	**plot_fig4.m**
     *	This script plots Figure 4
-    *   plots alternative models for left contralateral AEFs
+    *   Alternative models for left contralateral AEFs
     
 * **plot_fig5.m**  
     *	This script plots Figure 5
-    *   plots simulated and empirical data associated with right/left contralateral/ipsilateral AEFs 
+    *   Simulated and empirical data associated with right/left contralateral/ipsilateral AEFs 
 
     
 
 ***
 ## MEG_Data
-The ‘MEG_Data’ directory contains magnetoencephalographic (MEG) collected from ten human participants who were presented with 1kHz sine wave tones. 
+The ‘MEG_Data’ directory contains magnetoencephalographic data (MEG) collected from ten human participants who were presented with 1kHz sine wave tones. 
 Here, we provide one .txt file per condition, each containing the source-localized grand-average AEFs (column 1: time steps in ms, column 2: MEG signal in nAm)
 *	<span>**L_Contra**</span> contains data collected over the left hemisphere in response to stimuli presented on the right side (contralateral)
-*	<span>**L_Ipsi**</span> contains data collected over the left hemisphere in response to stimuli presented on the left side (ipsilateral)
+*	<span>**L_Ipsi**</span> contains data collected over the left hemisphere in response to stimuli presented on the left side  (ipsilateral)
 *	<span>**R_Contra**</span> contains data collected over the right hemisphere in response to stimuli presented on the left side (contralateral)
 *	<span>**R_Ipsi**</span> contains data collected over the right hemisphere in response to stimuli presented on the right side (ipsilateral)
 ***
 ## HNN_Parameters
-The ‘HNN_Parameters’ directory contains one .param file per model. Each file contains all parameters required for a simulation in the software: Human Neocortical Neurosolver (HNN).
+The ‘HNN_Parameters’ directory contains one .param file per model. Each file contains all parameters required for a simulation in the Human Neocortical Neurosolver (HNN) software.
 *	<span>**L_Contra**</span> contains parameters for the simulation of MEG_Data/L_Contra (see Manuscript Figure 3a-c & 5)
 *	<span>**L_Ipsi**</span> contains parameters for the simulation of MEG_Data/L_Ipsi (see Manuscript Figure 5)
 *	<span>**R_Contra**</span> contains parameters for the simulation of MEG_Data/R_Contra (see Manuscript Figure 3d-f &5)
@@ -52,8 +52,8 @@ The ‘HNN_Parameters’ directory contains one .param file per model. Each file
 ***
 ## HNN_Simulations
 The ‘HNN_Simulations’ directory contains HNN output associated with each of the parameter files in 'HNN_Parameters'.
-*	Each subdirectory corresponds to a parameter file in'HNN_Parameters' and contains the following files:  
-    <sub> **dpl**	contains the averaged dipole *(column 1: time steps in ms, column 2: aggregate dipole, column 3: Layer V dipole, column 4: Layer II/III dipole)*   
+*	Each subdirectory corresponds to a parameter file in 'HNN_Parameters' and contains the following .txt files:  
+    <sub> **dpl**	contains the averaged dipole *(column 1: time steps in ms, column 2: aggregate dipole, column 3: Layer II/III dipole, column 4: Layer V dipole)*   
      **dpl_0 - dpl_9**	contains the dipole associated with each trial *(here, 10 trials, column structure as in dpl)*   
      **rawdpl**	contains the raw (unnormalized, unscaled, unsmoothed) averaged dipole *(column structure as in dpl)*   
      **rawdpl_0 - rawdpl_9**	contains the raw dipole associated with each trial *(here, 10 trials, column structure as in dpl)*        </sub> 
@@ -62,6 +62,6 @@ The ‘HNN_Simulations’ directory contains HNN output associated with each of 
 
 
 Further information, code, and data may be available upon request. 
-Please refer to the manuscript or contact: kohl.carmen.1@gmail.com.  
-For further information regarding the Human Neocortical Neurosolver,
+Please refer to the manuscript or contact: kohl.carmen.1@gmail.com. 
+For further information regarding the Human Neocortical Neurosolver, or to run simulations using the parameter files provided,
 please refer to [jonescompneurolab/hnn](https://github.com/jonescompneurolab/hnn) or [hnn.brown.edu](https://hnn.brown.edu/).
