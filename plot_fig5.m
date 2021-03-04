@@ -2,53 +2,95 @@
 % Human Auditory Evoked Responses Revealed by Human Neocortical Neurosolver
 
 %% Plot Model & Data
-% Plot simulated and empirical data for left/right hemispheres as well as 
-% contralateral/ispilateral tone presentations (Manuscript Figure 5)
+% Plot alternative models associated with left contralateral AEFs  
+% (Manuscript Figure 5)
+% Alternative 1: change in calcium channel density
+% Alternative 2: change in connections targeting inhibitory interneurons
 
 % Written by Carmen Kohl, 2020.
 % github.com/kohl-carmen/MIP-TMS
 
 clear
-dir = fileparts(which('plot_fig5.m'));
+dir = fileparts(which('plot_fig4.m'));
 cd(dir)
 
-% Conditions
-Hemi = {'L', 'R',}; %left/right hemisphere
-Tone = {'Contra','Ipsi'}; %contra/ipsilateral tone presentation
+%Conditions
+Alt_Model={'Alternative_Gains','Alternative_Ca'};
 
 % Figure Settings
-ylims = [-60 20];
+colours = {[109 187 228], [41 47 123]; [224 80 45], [37 79 39]};
+ylims = [-60 30];
 xlims = [0 250];
-colours = {[109 187 228 127], [226 113 113 127]; [41 47 123], [126 20 22]};
+sim_trials = 10;
+subidx = [1 3; 6 8];
 
-% Figure
+% Figure 
 figure
-for hemi=1:length(Hemi)
-    subplot(1,length(Hemi),hemi)
-    hold on
-    title(strcat('Hemisphere: ',Hemi{hemi}))
-    xlabel('Time (ms)')
-    ylabel('Amplitude (nAm)')
-    xlim(xlims)
-    ylim(ylims)
-    for tone = 1:length(Tone)
-        
-        % load MEG data
-        data = load(strcat('MEG_Data\',Hemi{hemi},'_',Tone{tone},'.txt'));
-        data_time = data(:,1);%time
-        data = data(:,2);%AEF
+for alt = 1:length(Alt_Model)
+    %% plot individual trials
+    for trial = 1:sim_trials
         
         % load simulation
-        simulation = load(strcat('HNN_Simulations\',Hemi{hemi},'_',...
-                             Tone{tone},'\dpl.txt'));
-        simulation_time = simulation(:,1);%time
-        simulation_agg = simulation(:,2);%aggregate dipole
+        trial_simulation = load(strcat('HNN_Simulations\',Alt_Model{alt},...
+                                '\dpl_',num2str(trial-1),'.txt'));
+        simulation_time = trial_simulation(:,1);%time
+        trial_simulation_agg = trial_simulation(:,2);%aggregate dipole
+        trial_simulation_L2 = trial_simulation(:,3);%layerII/III dipole
+        trial_simulation_L5 = trial_simulation(:,4);%layerV dipole
         
-        %plot
-        plot(data_time, data,'Color', colours{1,tone}./255,'Linewidth',4);
-        plot(simulation_time, simulation_agg,...
-             'Color', colours{2,tone}./255, 'Linewidth', 2)
+        % plot aggregate dipoles
+        subplot(1,4,subidx(1,alt))
+        hold on
+        plot(simulation_time, trial_simulation_agg,...
+             'Color', [colours{1,2}, 127]./255)
+         
+        % plot layer-specific dipoles
+        subplot(2,4,subidx(2,alt))
+        hold on
+        plot(simulation_time, trial_simulation_L5,...
+             'Color', [colours{2,1}, 127]./255)
+        plot(simulation_time, trial_simulation_L2,...
+             'Color', [colours{2,2}, 127]./255)
     end
+    %% plot average  
+    % load MEG data (left contralateral)
+    data = load(strcat('MEG_Data\L_Contra.txt'));
+    data_time = data(:,1);%time
+    data = data(:,2);%AEF
+        
+    % load alternative model
+    simulation = load(strcat('HNN_Simulations\',Alt_Model{alt},'\dpl.txt'));
+    simulation_time = simulation(:,1);%time
+    simulation_agg = simulation(:,2);%aggregate dipole
+    simulation_L2 = simulation(:,3);%layerII/III dipole
+    simulation_L5 = simulation(:,4);%layerV dipole
+    
+    %plot data & aggregate dipoles
+    subplot(1,4,subidx(1,alt))
+    l1(1) = plot(data_time, data ,'Color',...
+                 colours{1,1}./255,'Linewidth',3);
+    l1(2) = plot(simulation_time, simulation_agg,'--','Color',...
+                 colours{1,2}./255,'Linewidth',3);
+    xlabel('Time (ms)')
+    ylabel('Amplitude (nAm)')
+    ylim(ylims)
+    xlim(xlims)
+    title(strcat(Alt_Model{alt}(1:11),': ', Alt_Model{alt}(13:end)))
+    legend(l1, 'Data','Model')
+    
+    %plot layer-specific dipoles
+    subplot(2,4,subidx(2,alt))
+    l2(1) = plot(simulation_time, simulation_L5, 'Color',...
+                 colours{2,1}./255,'Linewidth',2);
+    l2(2) = plot(simulation_time, simulation_L2, 'Color',...
+                 colours{2,2}./255,'Linewidth',2);
+    xlabel('Time (ms)')
+    ylabel('Amplitude (nAm)')
+    ylim(ylims)
+    xlim(xlims)
+    title('Layer-specific Dipoles')
+    legend(l2, 'Layer V','Layer II/III')
 end
-legend('contra data','contra model','ipsi data', 'ipsi model')        
-                  
+
+
+
