@@ -11,21 +11,21 @@ Kohl, C.<sup>1</sup>, Parviainen, T. <sup>2, 3</sup> & Jones, S. R. <sup>1, 4</s
 This repository contains data as well as code to replicate the main findings associated with the manuscript “Neural Mechanisms Underlying Human Auditory Evoked Responses Revealed by Human Neocortical Neurosolver”. 
 
 Abstract:
-*Auditory evoked fields (AEFs) are commonly studied, yet their underlying neural mechanisms remain poorly understood. Here, we used the biophysical modelling software Human Neocortical Neurosolver (HNN) whose foundation is a canonical neocortical circuit model to interpret the cell and network mechanisms contributing to macroscale AEFs elicited by a simple tone, measured with magnetoencephalography. We found that AEFs can be reproduced by activating the neocortical circuit through a layer specific sequence of feedforward and feedback excitatory drives, similar to prior simulation of somatosensory evoked responses, supporting the notion that basic structures and activation patterns are preserved across sensory regions. We also applied the modeling framework to develop and test prediction on neural mechanisms underlying AEF differences in the left and right hemispheres, as well as between hemispheres contralateral and ipsilateral to the presentation of the auditory stimulus. We found that varying the strength of the activating cortical feedback inputs simulates the commonly observed right hemisphere dominance, while varying the input latency and the number of cells contributing to the signal accounted for the contralateral dominance. These results provide a direct link between human data and prior animal studies and lay the foundation for future translational research examining the mechanisms underlying alteration in this fundamental biomarker of auditory processing in healthy cognition and neuropathology.*  
+*Auditory evoked fields (AEFs) are commonly studied, yet their underlying neural mechanisms remain poorly understood. Here, we used the biophysical modelling software Human Neocortical Neurosolver (HNN) whose foundation is a canonical neocortical circuit model to interpret the cell and network mechanisms contributing to macroscale AEFs elicited by a simple tone, measured with magnetoencephalography. We found that AEFs can be reproduced by activating the neocortical circuit through a layer specific sequence of feedforward and feedback excitatory synaptic drives, similar to prior simulation of somatosensory evoked responses, supporting the notion that basic structures and activation patterns are preserved across sensory regions. We also applied the modeling framework to develop and test prediction on neural mechanisms underlying AEF differences in the left and right hemispheres, as well as between hemispheres contralateral and ipsilateral to the presentation of the auditory stimulus. We found that increasing the strength of the excitatory synaptic cortical feedback inputs to supragranular layers simulates the commonly observed right hemisphere dominance, while decreasing the input latencies and simultaneously increasing the number of cells contributing to the signal accounted for the contralateral dominance. These results provide a direct link between human data and prior animal studies and lay the foundation for future translational research examining the mechanisms underlying alteration in this fundamental biomarker of auditory processing in healthy cognition and neuropathology.*  
 
 ***
 ## Code
 This repository contains three .m files which reproduce the main result figures in the manuscript, using the empirical and simulated data provided in the ‘MEG_Data’ and 'HNN_Simulations' directories respectively.
- *	**plot_fig3.m**
-    *	This script plots Figure 3
+ *	**plot_fig4.m**
+    *	This script plots Figure 4
     *   Simulated and empirical data associated with right/left contralateral AEFs
      
-*	**plot_fig4.m**
-    *	This script plots Figure 4
+*	**plot_fig5.m**
+    *	This script plots Figure 5
     *   Alternative models for left contralateral AEFs
     
-* **plot_fig5.m**  
-    *	This script plots Figure 5
+* **plot_fig6.m**  
+    *	This script plots Figure 6
     *   Simulated and empirical data associated with right/left contralateral/ipsilateral AEFs 
 
     
@@ -49,6 +49,8 @@ The ‘HNN_Parameters’ directory contains one .param file per model. Each file
 *	<span>**R_Contra_No_Smoothing**</span> contains parameters for the unsmoothed simulation of MEG_Data/R_Contra (see Supplementary Materials Figure S1)
 *	<span>**Alternative_Ca**</span> contains parameters for the simulation of an alternative model of MEG_Data/L_Contra (by decreasing the synapctic gains in all connections targeting inhibitory interneurons, see Manuscript Figure 4a)
 *	<span>**Alternative_Gains**</span> contains parameters for the simulation of an alternative model of MEG_Data/L_Contra (by decreasing Layer V pyramidal calcium channel densities, see Manuscript Figure 4b)
+*	<span>**Alternative_Proximalx3**</span> contains parameters for the simulation of an alternative model of MEG_Data/R_Contra (by simulating a series of three proximal inputs, see Manuscript Figure S1b)
+*	<span>**Alternative_Distalx3**</span> contains parameters for the simulation of an alternative model of MEG_Data/R_Contra (by simulating a series of three distal inputs, see Manuscript Figure S1c)
 ***
 ## HNN_Simulations
 The ‘HNN_Simulations’ directory contains HNN output associated with each of the parameter files in 'HNN_Parameters'.
