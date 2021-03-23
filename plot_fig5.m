@@ -11,7 +11,7 @@
 % github.com/kohl-carmen/MIP-TMS
 
 clear
-dir = fileparts(which('plot_fig4.m'));
+dir = fileparts(which('plot_fig5.m'));
 cd(dir)
 
 %Conditions
@@ -31,8 +31,8 @@ for alt = 1:length(Alt_Model)
     for trial = 1:sim_trials
         
         % load simulation
-        trial_simulation = load(strcat('HNN_Simulations\',Alt_Model{alt},...
-                                '\dpl_',num2str(trial-1),'.txt'));
+        trial_simulation = load(strcat('HNN_Simulations', filesep ,Alt_Model{alt},...
+                                filesep, 'dpl_',num2str(trial-1),'.txt'));
         simulation_time = trial_simulation(:,1);%time
         trial_simulation_agg = trial_simulation(:,2);%aggregate dipole
         trial_simulation_L2 = trial_simulation(:,3);%layerII/III dipole
@@ -54,12 +54,12 @@ for alt = 1:length(Alt_Model)
     end
     %% plot average  
     % load MEG data (left contralateral)
-    data = load(strcat('MEG_Data\L_Contra.txt'));
+    data = load(strcat('MEG_Data', filesep, 'L_Contra.txt'));
     data_time = data(:,1);%time
     data = data(:,2);%AEF
         
     % load alternative model
-    simulation = load(strcat('HNN_Simulations\',Alt_Model{alt},'\dpl.txt'));
+    simulation = load(strcat('HNN_Simulations', filesep ,Alt_Model{alt}, filesep, 'dpl.txt'));
     simulation_time = simulation(:,1);%time
     simulation_agg = simulation(:,2);%aggregate dipole
     simulation_L2 = simulation(:,3);%layerII/III dipole

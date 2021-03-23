@@ -9,7 +9,7 @@
 % github.com/kohl-carmen/MIP-TMS
 
 clear
-dir = fileparts(which('plot_fig3.m'));
+dir = fileparts(which('plot_fig4.m'));
 cd(dir)
 
 % Conditions
@@ -30,8 +30,8 @@ for hemi = 1:length(Hemi)
     for trial = 1:sim_trials
         
         % load simulation
-        trial_simulation = load(strcat('HNN_Simulations\',Hemi{hemi},'_',...
-                                Tone{:},'\dpl_',num2str(trial-1),'.txt'));
+        trial_simulation = load(strcat('HNN_Simulations', filesep, Hemi{hemi},'_',...
+                                Tone{:}, filesep, 'dpl_',num2str(trial-1),'.txt'));
         simulation_time = trial_simulation(:,1); %time
         trial_simulation_agg = trial_simulation(:,2);%aggregate dipole
         trial_simulation_L2 = trial_simulation(:,3); %layerII/III dipole
@@ -53,13 +53,13 @@ for hemi = 1:length(Hemi)
     end
     %% plot average    
     % load MEG data 
-    data = load(strcat('MEG_Data\',Hemi{hemi},'_Contra.txt'));
+    data = load(strcat('MEG_Data', filesep, Hemi{hemi},'_Contra.txt'));
     data_time = data(:,1); %time
     data = data(:,2); %AEF
         
     % load simulation
-    simulation = load(strcat('HNN_Simulations\',Hemi{hemi},...
-                             '_Contra\dpl.txt'));
+    simulation = load(strcat('HNN_Simulations', filesep, Hemi{hemi},...
+                             '_Contra', filesep, 'dpl.txt'));
     simulation_time = simulation(:,1);%time
     simulation_agg = simulation(:,2);%aggregate dipole
     simulation_L2 = simulation(:,3);%layerII/III dipole
