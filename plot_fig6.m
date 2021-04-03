@@ -9,7 +9,7 @@
 % github.com/kohl-carmen/MIP-TMS
 
 clear
-dir = fileparts(which('plot_fig5.m'));
+dir = fileparts(which('plot_fig6.m'));
 cd(dir)
 
 % Conditions
@@ -34,13 +34,13 @@ for hemi=1:length(Hemi)
     for tone = 1:length(Tone)
         
         % load MEG data
-        data = load(strcat('MEG_Data\',Hemi{hemi},'_',Tone{tone},'.txt'));
+        data = load(strcat('MEG_Data', filesep, Hemi{hemi},'_',Tone{tone},'.txt'));
         data_time = data(:,1);%time
         data = data(:,2);%AEF
         
         % load simulation
-        simulation = load(strcat('HNN_Simulations\',Hemi{hemi},'_',...
-                             Tone{tone},'\dpl.txt'));
+        simulation = load(strcat('HNN_Simulations', filesep, Hemi{hemi},'_',...
+                             Tone{tone}, filesep, 'dpl.txt'));
         simulation_time = simulation(:,1);%time
         simulation_agg = simulation(:,2);%aggregate dipole
         
