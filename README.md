@@ -8,7 +8,7 @@ Kohl, C.<sup>1</sup>, Parviainen, T. <sup>2, 3</sup> & Jones, S. R. <sup>1, 4</s
 <sup>4</sup> Center for Neurorestoration and Neurotechnology, Providence VAMC, Providence, United States</sup>  
 
 ***
-This repository contains data as well as code to replicate the main findings associated with the manuscript “Neural Mechanisms Underlying Human Auditory Evoked Responses Revealed by Human Neocortical Neurosolver”. 
+This repository contains data as well as code to replicate the main findings associated with the manuscript [“Neural Mechanisms Underlying Human Auditory Evoked Responses Revealed by Human Neocortical Neurosolver”](https://doi.org/10.1007/s10548-021-00838-0). 
 
 Abstract:
 *Auditory evoked fields (AEFs) are commonly studied, yet their underlying neural mechanisms remain poorly understood. Here, we used the biophysical modelling software Human Neocortical Neurosolver (HNN) whose foundation is a canonical neocortical circuit model to interpret the cell and network mechanisms contributing to macroscale AEFs elicited by a simple tone, measured with magnetoencephalography. We found that AEFs can be reproduced by activating the neocortical circuit through a layer specific sequence of feedforward and feedback excitatory synaptic drives, similar to prior simulation of somatosensory evoked responses, supporting the notion that basic structures and activation patterns are preserved across sensory regions. We also applied the modeling framework to develop and test prediction on neural mechanisms underlying AEF differences in the left and right hemispheres, as well as between hemispheres contralateral and ipsilateral to the presentation of the auditory stimulus. We found that increasing the strength of the excitatory synaptic cortical feedback inputs to supragranular layers simulates the commonly observed right hemisphere dominance, while decreasing the input latencies and simultaneously increasing the number of cells contributing to the signal accounted for the contralateral dominance. These results provide a direct link between human data and prior animal studies and lay the foundation for future translational research examining the mechanisms underlying alteration in this fundamental biomarker of auditory processing in healthy cognition and neuropathology.*  
@@ -61,7 +61,7 @@ The ‘HNN_Simulations’ directory contains HNN output associated with each of 
      **rawdpl_0 - rawdpl_9**	contains the raw dipole associated with each trial *(here, 10 trials, column structure as in dpl)*        </sub> 
 
 ***
-
+Kohl, C., Parviainen, T. & Jones, S.R. Neural Mechanisms Underlying Human Auditory Evoked Responses Revealed By Human Neocortical Neurosolver. Brain Topogr (2021). [https://doi.org/10.1007/s10548-021-00838-0](https://doi.org/10.1007/s10548-021-00838-0)
 
 Further information, code, and data may be available upon request. 
 Please refer to the manuscript or contact kohl.carmen.1@gmail.com. 
