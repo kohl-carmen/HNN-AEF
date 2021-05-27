@@ -28,6 +28,9 @@ This repository contains three .m files which reproduce the main result figures 
     *	This script plots Figure 6
     *   Simulated and empirical data associated with right/left contralateral/ipsilateral AEFs 
 
+* **L5_pyramidal.py**  
+    *	This file allows for an exact replication of the HNN simulations described in the manuscript (see below)
+    *   Contains updated layer V calicum dynamics compared to the L5_pyramidal.py file currently distributed on [jonescompneurolab/hnn](https://github.com/jonescompneurolab/hnn)
     
 
 ***
@@ -59,6 +62,11 @@ The ‘HNN_Simulations’ directory contains HNN output associated with each of 
      **dpl_0 - dpl_9**	contains the dipole associated with each trial *(here, 10 trials, column structure as in dpl)*   
      **rawdpl**	contains the raw (unnormalized, unscaled, unsmoothed) averaged dipole *(column structure as in dpl)*   
      **rawdpl_0 - rawdpl_9**	contains the raw dipole associated with each trial *(here, 10 trials, column structure as in dpl)*        </sub> 
+
+***
+
+**Please Note:** The specific version of HNN used in this study has not been released at the time of publication. The version used here differs from the current (May 2021) release of HNN in the way layer V calcium dynamics are calculated, which can lead to slight differences in the shape of the dipole waveform.  
+For an exact replication of the published simulations, please use the parameter files in the 'HNN Parameters' directory and replace the file  'L5_pyramidal.py' in your local HNN directory with the ['L5_pyramidal.py'](https://github.com/kohl-carmen/HNN-AEF/blob/main/L5_pyramidal.py) file provided in this repository.
 
 ***
 Kohl, C., Parviainen, T. & Jones, S.R. Neural Mechanisms Underlying Human Auditory Evoked Responses Revealed By Human Neocortical Neurosolver. Brain Topogr (2021). [https://doi.org/10.1007/s10548-021-00838-0](https://doi.org/10.1007/s10548-021-00838-0)
