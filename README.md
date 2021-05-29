@@ -12,6 +12,12 @@ This repository contains data as well as code to replicate the main findings ass
 
 Abstract:
 *Auditory evoked fields (AEFs) are commonly studied, yet their underlying neural mechanisms remain poorly understood. Here, we used the biophysical modelling software Human Neocortical Neurosolver (HNN) whose foundation is a canonical neocortical circuit model to interpret the cell and network mechanisms contributing to macroscale AEFs elicited by a simple tone, measured with magnetoencephalography. We found that AEFs can be reproduced by activating the neocortical circuit through a layer specific sequence of feedforward and feedback excitatory synaptic drives, similar to prior simulation of somatosensory evoked responses, supporting the notion that basic structures and activation patterns are preserved across sensory regions. We also applied the modeling framework to develop and test prediction on neural mechanisms underlying AEF differences in the left and right hemispheres, as well as between hemispheres contralateral and ipsilateral to the presentation of the auditory stimulus. We found that increasing the strength of the excitatory synaptic cortical feedback inputs to supragranular layers simulates the commonly observed right hemisphere dominance, while decreasing the input latencies and simultaneously increasing the number of cells contributing to the signal accounted for the contralateral dominance. These results provide a direct link between human data and prior animal studies and lay the foundation for future translational research examining the mechanisms underlying alteration in this fundamental biomarker of auditory processing in healthy cognition and neuropathology.*  
+  
+
+***
+
+**Please Note:** The specific version of HNN used in this study has not been released at the time of publication. The version used here differs from the current (May 2021) release of HNN in the way layer V calcium dynamics are calculated, which can lead to slight differences in the shape of the dipole waveform.  
+For an exact replication of the published simulations, please use the parameter files in the 'HNN Parameters' directory (described below) and replace the file  'L5_pyramidal.py' in your local HNN directory with the ['L5_pyramidal.py'](https://github.com/kohl-carmen/HNN-AEF/blob/main/L5_pyramidal.py) file provided in this repository.
 
 ***
 ## Code
@@ -43,7 +49,7 @@ Here, we provide one .txt file per condition, each containing the source-localiz
 *	<span>**R_Ipsi**</span> contains data collected over the right hemisphere in response to stimuli presented on the right side (ipsilateral)
 ***
 ## HNN_Parameters
-The ‘HNN_Parameters’ directory contains one .param file per model. Each file contains all parameters required for a simulation in the Human Neocortical Neurosolver (HNN) software.
+The ‘HNN_Parameters’ directory contains one .param file per for each simulation that generated a figure in the paper. Each file contains all parameters required for a simulation in the Human Neocortical Neurosolver (HNN) software.
 *	<span>**L_Contra**</span> contains parameters for the simulation of MEG_Data/L_Contra (see Manuscript Figure 3a-c & 5)
 *	<span>**L_Ipsi**</span> contains parameters for the simulation of MEG_Data/L_Ipsi (see Manuscript Figure 5)
 *	<span>**R_Contra**</span> contains parameters for the simulation of MEG_Data/R_Contra (see Manuscript Figure 3d-f &5)
@@ -62,11 +68,6 @@ The ‘HNN_Simulations’ directory contains HNN output associated with each of 
      **dpl_0 - dpl_9**	contains the dipole associated with each trial *(here, 10 trials, column structure as in dpl)*   
      **rawdpl**	contains the raw (unnormalized, unscaled, unsmoothed) averaged dipole *(column structure as in dpl)*   
      **rawdpl_0 - rawdpl_9**	contains the raw dipole associated with each trial *(here, 10 trials, column structure as in dpl)*        </sub> 
-
-***
-
-**Please Note:** The specific version of HNN used in this study has not been released at the time of publication. The version used here differs from the current (May 2021) release of HNN in the way layer V calcium dynamics are calculated, which can lead to slight differences in the shape of the dipole waveform.  
-For an exact replication of the published simulations, please use the parameter files in the 'HNN Parameters' directory and replace the file  'L5_pyramidal.py' in your local HNN directory with the ['L5_pyramidal.py'](https://github.com/kohl-carmen/HNN-AEF/blob/main/L5_pyramidal.py) file provided in this repository.
 
 ***
 Kohl, C., Parviainen, T. & Jones, S.R. Neural Mechanisms Underlying Human Auditory Evoked Responses Revealed By Human Neocortical Neurosolver. Brain Topogr (2021). [https://doi.org/10.1007/s10548-021-00838-0](https://doi.org/10.1007/s10548-021-00838-0)
