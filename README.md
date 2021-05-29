@@ -35,7 +35,7 @@ This repository contains three .m files which reproduce the main result figures 
     *   Simulated and empirical data associated with right/left contralateral/ipsilateral AEFs 
 
 * **L5_pyramidal.py**  
-    *	This file allows for an exact replication of the HNN simulations described in the manuscript (see below)
+    *	This file allows for an exact replication of the HNN simulations described in the manuscript 
     *   Contains updated layer V calicum dynamics compared to the L5_pyramidal.py file currently distributed on [jonescompneurolab/hnn](https://github.com/jonescompneurolab/hnn)
     
 
